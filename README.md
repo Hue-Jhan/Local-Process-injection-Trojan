@@ -32,7 +32,7 @@ Finally we wait for the created thread to finish executing before freeing the me
 
 # 🛡 AV Detection
 
-<img align="right" src="media/hsav1.png" width="430" />
+<img align="right" src="media/hsav2.png" width="430" />
 
 Just like my previous trojans, it's currently undetected by windows defender, but it's easily blocked by Bitdefender, even the free trial.
 Again Virus Total says that bitdefender won't classify the exe file as malicious, while Microsoft recognizes the malware.... it should be the exact opposite but idk.
