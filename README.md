@@ -36,4 +36,5 @@ Finally we wait for the created thread to finish executing before freeing the me
 
 Just like my previous trojans, it's currently undetected by windows defender, but it's easily blocked by Bitdefender, even the free trial.
 Again Virus Total says that bitdefender won't classify the exe file as malicious, while Microsoft recognizes the malware.... it should be the exact opposite but idk.
-You can still make it fully undetectable by using other encrypting softwares like Soggoth or Supernova or idk, but at that point just use a much more known rat like xworm.
+
+You can still make it fully undetectable by using other encrypting softwares like Soggoth or Supernova or idk, but at this point just use a much more known rat like xworm.
