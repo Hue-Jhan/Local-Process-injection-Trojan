@@ -17,7 +17,7 @@ You can embed the code into pretty much anything, you can even use tools to mask
 
 The encryptor takes the shellcode (which in the code i uploaded is just a windows message box that says xd lol) and obfuscates it using 3 layers of encryption:
 - First we encode binary data into a Base64 representation, use a custom base64_chars set instead of the standard Base64 alphabet to add obfuscation;
-- Secondly we apply XOR encryption on the string using a single-byte key, XOR encryption is symmetric so it can be decrypted by applying the same key;
+- Secondly we apply XOR encryption using a single-byte key;
 - Then we convert it into its hexadecimal string representation and we get the final encrypted shellcode.
 
 ### 3) Injector:
