@@ -15,15 +15,15 @@ You can embed the code into pretty much anything, you can even use tools to mask
 
 ### 2) Encrypter:
 
-The encryptor takes the shellcode (which in the code i uploaded is just a windows message box that says xd lol) and obfuscates it using 3 layers of encryption:
-- First we encode binary data into a Base64 representation, use a custom base64_chars set instead of the standard Base64 alphabet to add obfuscation;
+The encryptor takes the shellcode (which in this code is just a windows message box that says xd lol) and obfuscates it using 3 layers of encryption:
+- First we encode binary data into Base64, try to use a custom base64_chars set instead of the standard Base64 alphabet to obfuscate more;
 - Secondly we apply XOR encryption using a single-byte key;
 - Then we convert it into its hexadecimal string representation and we get the final encrypted shellcode.
 
 ### 3) Injector:
 
 The actual injection process works like this:
-- First we decode the shellcode by doing the opposite of what we did in the encrypter, use the same xor key;
+- First we decode the shellcode by doing the opposite of what we did in the encrypter, make sure to use the same xor key;
 - Secondly we allocate the memory, write shellcode to the allocated memory, and make it readable, writable, and executable, allowing the shellcode to run.
 - Then we copy the shellcode into the newly allocated memory and we make sure that the allocated memory has the correct permissions to execute the shellcode;
 - It creates a new thread at the address of ```allocated_mem```, which contains and executes the shellcode as if it were a normal function.
