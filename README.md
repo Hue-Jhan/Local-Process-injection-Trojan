@@ -1,5 +1,6 @@
 # Encrypted Trojan with Process Hollowing (Undetected)
-Encrypted malware using process hollowing, it creates a shell injecting shellcode which is encrypted using xor, base64 and hexadecimal encoding. Undetected by Windows defender as of 2025.
+Encrypted malware using process hollowing, it creates a shell injecting shellcode which is encrypted using xor, base64 and hexadecimal encoding, undetected by Windows defender. 
+This code is for educational purposes only, do not use it for any malicious or unauthorized activity.
 
 # 💻 Code
 Simple shellcode execution technique in which the payload is decrypted, copied into memory, and executed in the same process without writing it into disk. Similar to my other trojan, [Self injection](https://github.com/Hue-Jhan/Encrypted-Trojan-Undetected), but slightly different.
