@@ -26,8 +26,7 @@ The encryptor takes the shellcode (which in this code is just a windows message 
 The actual injection process works like this:
 - First we decode the shellcode by doing the opposite of what we did in the encrypter, make sure to use the same xor key;
 - Secondly we allocate the memory, write shellcode to the allocated memory, and make it readable, writable, and executable, allowing the shellcode to run.
-- Then we copy the shellcode into the newly allocated memory and we make sure that the allocated memory has the correct permissions to execute the shellcode;
-- It creates a new thread at the address of ```allocated_mem```, which contains and executes the shellcode as if it were a normal function.
+- Finally we create a new thread at the address of ```allocated_mem```, which contains and executes the shellcode as if it were a normal function.
 
 Finally we wait for the created thread to finish executing before freeing the memory and the buffers.
 
