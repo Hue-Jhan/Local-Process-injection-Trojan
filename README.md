@@ -1,5 +1,5 @@
 # Encrypted Local Process injection Trojan
-Malware that creates a process and injects a shellcode that opens a reverse shell. Shellcode encrypted using xor, base64 and hexadecimal encoding, undetected by Windows defender. 
+Malware that creates a process and injects a shellcode that opens a reverse shell. Shellcode encrypted using xor, base64 and hexadecimal encoding.
 This code is for educational purposes only, do not use it for any malicious or unauthorized activity.
 
 # 💻 Code
@@ -35,5 +35,3 @@ Finally we wait for the created thread to finish executing before freeing the me
 <img align="right" src="media/hsav2.png" width="430" />
 
 Sometimes undetected by windows defender, easily blocked by Bitdefender, even the free trial.
-
-Virus Total says that bitdefender won't classify the exe file as malicious, while Microsoft recognizes the malware...
